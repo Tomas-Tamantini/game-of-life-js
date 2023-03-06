@@ -1,4 +1,5 @@
 import GameOfLife from "./models/gameOfLife.js";
+import { simpleGliderCells, bigGliderCells } from "./models/samples.js";
 
 const canvas = document.getElementById("my-canvas");
 const ctx = canvas.getContext("2d");
@@ -6,13 +7,7 @@ const cellSize = 6;
 let frameCount = 0;
 let framesPerSecond = 10;
 
-const game = new GameOfLife([
-  [40, 40],
-  [40, 41],
-  [40, 42],
-  [41, 42],
-  [42, 41],
-]);
+const game = new GameOfLife(bigGliderCells);
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
