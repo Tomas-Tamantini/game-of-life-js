@@ -65,7 +65,7 @@ const testCases = [
   {
     testDescription:
       "Live cell with fewer than two or more than three neighbors dies",
-    testExectionsArgs: [0, 1, 4, 5, 6, 7, 8],
+    testExecutionsArgs: [0, 1, 4, 5, 6, 7, 8],
     testFun: (numNeighbors) => {
       const cellPos = [0, 0];
       let neighborPositions = generateNeighbors(cellPos, numNeighbors);
@@ -77,7 +77,7 @@ const testCases = [
 
   {
     testDescription: "Live cell with two or three neighbors survives",
-    testExectionsArgs: [2, 3],
+    testExecutionsArgs: [2, 3],
     testFun: (numNeighbors) => {
       const cellPos = [0, 0];
       let neighborPositions = generateNeighbors(cellPos, numNeighbors);
@@ -89,7 +89,7 @@ const testCases = [
 
   {
     testDescription: "Dead cell without three neighbors stays dead",
-    testExectionsArgs: [0, 1, 2, 4, 5, 6, 7, 8],
+    testExecutionsArgs: [0, 1, 2, 4, 5, 6, 7, 8],
     testFun: (numNeighbors) => {
       const cellPos = [0, 0];
       let neighborPositions = generateNeighbors(cellPos, numNeighbors);

@@ -7,11 +7,11 @@ let numPassed = 0;
 let numFailed = 0;
 
 console.log("Unit test results:");
-testCases.forEach(({ testDescription, testExectionsArgs, testFun }) => {
+testCases.forEach(({ testDescription, testExecutionsArgs, testFun }) => {
   let testPassed = true;
   try {
-    if (testExectionsArgs) {
-      for (let arg of testExectionsArgs) testFun(arg);
+    if (testExecutionsArgs) {
+      for (let arg of testExecutionsArgs) testFun(arg);
     } else testFun();
   } catch (error) {
     testPassed = false;
