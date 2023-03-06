@@ -1,99 +1,96 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Set body background color */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    color: #333;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: #333;
 }
 
 header {
-    background-color: #f2f2f2;
-    padding: 20px;
-    text-align: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
 }
 
 h2 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 /* Style the page content */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 p {
-    font-size: 16px;
-    margin-bottom: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 /* Style the canvas */
 canvas {
-    display: block;
-    margin: 0 auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Style the slider */
 label[for="framerate-slider"] {
-    display: inline-block;
-    font-size: 16px;
-    margin-right: 10px;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
 }
 
 #framerate-slider {
-    display: inline-block;
-    width: 150px;
-    vertical-align: middle;
+  display: inline-block;
+  width: 150px;
+  vertical-align: middle;
 }
 
 /* Style the buttons */
+.button-container {
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 #toggle-animation-btn {
-    display: block;
-    margin: 20px auto 0;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 20px;
+  background-color: #4caf50;
 }
 
 #clear-btn {
-    display: block;
-    margin: 20px 10px 0;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #2196F3;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
+  background-color: #2196f3;
+}
 
 #toggle-animation-btn.playing {
-    background-color: #FF6347;
+  background-color: #ff6347;
 }
 
 #toggle-animation-btn.paused {
-    background-color: #4CAF50;
+  background-color: #4caf50;
 }
