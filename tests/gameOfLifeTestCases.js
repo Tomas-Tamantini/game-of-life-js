@@ -72,6 +72,19 @@ const testCases = [
       assert(!game.cellIsAlive(...cellPos));
     },
   },
+
+  {
+    testDescription:
+      "Live cell with fewer than two or more than three neighbors dies",
+    testExectionsArgs: [0, 1, 4, 5, 6, 7, 8],
+    testFun: (numNeighbors) => {
+      const cellPos = [0, 0];
+      let neighborPositions = generateNeighbors(cellPos, numNeighbors);
+      let game = new GameOfLife([cellPos].concat(neighborPositions));
+      game.step();
+      assert(!game.cellIsAlive(...cellPos));
+    },
+  },
 ];
 
 export default testCases;
