@@ -4,19 +4,24 @@ import { simpleGliderCells, bigGliderCells } from "./models/samples.js";
 const canvas = document.getElementById("my-canvas");
 const ctx = canvas.getContext("2d");
 const toggleBtn = document.getElementById("toggle-animation-btn");
+const clearBtn = document.getElementById("clear-btn");
 const slider = document.getElementById("framerate-slider");
 const cellSize = 6;
 let frameCount = 0;
 let framesPerSecond = 10;
 let isPaused = false;
 
-const game = new GameOfLife(bigGliderCells);
+let game = new GameOfLife(bigGliderCells);
 
 toggleBtn.addEventListener("click", () => {
   isPaused = !isPaused;
-  toggleBtn.textContent = isPaused ? "Play" : "Pause";
-  toggleBtn.classList.add(isPaused ? "paused" : "playing");
-  toggleBtn.classList.remove(isPaused ? "playing" : "paused");
+  setToggleBtnStyle();
+});
+
+clearBtn.addEventListener("click", () => {
+  isPaused = true;
+  setToggleBtnStyle();
+  game = new GameOfLife();
 });
 
 slider.addEventListener("input", function () {
@@ -31,6 +36,12 @@ canvas.addEventListener("click", function (event) {
   const yGridCoord = Math.floor(y / cellSize);
   game.toggleCell(xGridCoord, yGridCoord);
 });
+
+function setToggleBtnStyle() {
+  toggleBtn.textContent = isPaused ? "Play" : "Pause";
+  toggleBtn.classList.add(isPaused ? "paused" : "playing");
+  toggleBtn.classList.remove(isPaused ? "playing" : "paused");
+}
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);

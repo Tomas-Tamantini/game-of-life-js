@@ -61,7 +61,7 @@ label[for="framerate-slider"] {
     vertical-align: middle;
 }
 
-/* Style the play/pause button */
+/* Style the buttons */
 #toggle-animation-btn {
     display: block;
     margin: 20px auto 0;
@@ -75,6 +75,20 @@ label[for="framerate-slider"] {
     cursor: pointer;
     margin-bottom: 20px;
 }
+
+#clear-btn {
+    display: block;
+    margin: 20px 10px 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2196F3;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
 
 #toggle-animation-btn.playing {
     background-color: #FF6347;
