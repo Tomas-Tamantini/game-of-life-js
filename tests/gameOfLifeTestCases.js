@@ -63,14 +63,13 @@ const testCases = [
 
   {
     testDescription: "Dead cell without three neighbors stays dead",
-    testFun: () => {
+    testExectionsArgs: [0, 1, 2, 4, 5, 6, 7, 8],
+    testFun: (numNeighbors) => {
       const cellPos = [0, 0];
-      for (let numNeighbors of [0, 1, 2, 4, 5, 6, 7, 8]) {
-        let neighborPositions = generateNeighbors(cellPos, numNeighbors);
-        let game = new GameOfLife(neighborPositions);
-        game.step();
-        assert(!game.cellIsAlive(...cellPos));
-      }
+      let neighborPositions = generateNeighbors(cellPos, numNeighbors);
+      let game = new GameOfLife(neighborPositions);
+      game.step();
+      assert(!game.cellIsAlive(...cellPos));
     },
   },
 ];
