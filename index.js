@@ -1,5 +1,11 @@
 import GameOfLife from "./models/gameOfLife.js";
-import { simpleGliderCells, bigGliderCells } from "./models/samples.js";
+import {
+  bigGliderCells,
+  gosperGliderGunCells,
+  lightWeightSpaceShipCells,
+  pulsarCells,
+  simpleGliderCells,
+} from "./models/samples.js";
 
 const canvas = document.getElementById("my-canvas");
 const ctx = canvas.getContext("2d");
@@ -11,7 +17,12 @@ let frameCount = 0;
 let framesPerSecond = 10;
 let isPaused = false;
 
-let game = new GameOfLife(bigGliderCells);
+let game = new GameOfLife(
+  gosperGliderGunCells
+    .concat(pulsarCells)
+    .concat(bigGliderCells)
+    .concat(lightWeightSpaceShipCells)
+);
 
 toggleBtn.addEventListener("click", () => {
   isPaused = !isPaused;
