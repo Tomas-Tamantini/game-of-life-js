@@ -1,4 +1,5 @@
 import GameOfLife from "../models/gameOfLife.js";
+import { coordToStr } from "../models/coordinateConversion.js";
 
 function assert(assertion) {
   if (assertion === false) throw Error("Test failed");
@@ -106,6 +107,39 @@ const testCases = [
       const game = new GameOfLife(neighborPositions);
       game.step();
       assert(game.cellIsAlive(...cellPos));
+    },
+  },
+
+  {
+    testDescription: "Glider moves through grid",
+    testFun: () => {
+      let gameWithGlider = new GameOfLife([
+        [0, 0],
+        [0, 1],
+        [0, 2],
+        [1, 2],
+        [2, 1],
+      ]);
+      let expectedNextGen = [
+        [1, 0],
+        [1, 2],
+        [0, 1],
+        [0, 2],
+        [-1, 1],
+      ];
+      gameWithGlider.step();
+      assert(gameWithGlider.liveCells.length === expectedNextGen.length);
+
+      let setExpected = new Set(
+        Array.from(expectedNextGen, (c) => coordToStr(...c))
+      );
+      let setComputed = new Set(
+        Array.from(gameWithGlider.liveCells, (c) => coordToStr(...c))
+      );
+      const setsAreEqual = (a, b) =>
+        a.size === b.size && [...a].every((x) => b.has(x));
+
+      assert(setsAreEqual(setExpected, setComputed));
     },
   },
 ];
