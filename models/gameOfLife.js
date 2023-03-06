@@ -21,6 +21,11 @@ export default class GameOfLife {
     else this.#liveCells.add(coords);
   }
 
+  step() {
+    let nextGen = new Set();
+    this.#liveCells = nextGen;
+  }
+
   cellIsAlive(x, y) {
     return this.#liveCells.has(coordToStr(x, y));
   }

@@ -36,6 +36,15 @@ const testCases = [
       assert(!game.cellIsAlive(0, 0));
     },
   },
+
+  {
+    testDescription: "Dead world stays dead",
+    testFun: () => {
+      const deadWorld = new GameOfLife();
+      deadWorld.step();
+      assert(deadWorld.liveCells.length === 0);
+    },
+  },
 ];
 
 export default testCases;
