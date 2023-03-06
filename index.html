@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="index.js" type="module"></script>
     <script src="tests/runTests.js" type="module"></script>
     <title>Game of Life</title>
@@ -15,7 +16,7 @@
     </header>
     <main>
       <canvas id="my-canvas" width="500" height="300"></canvas>
-      <button id="toggle-animation-btn">Play/Pause</button>
+      <button id="toggle-animation-btn" class="playing">Pause</button>
       <p>Click the canvas to add/remove cells when the animation is paused</p>
       <label for="framerate-slider">Animation speed:</label>
       <input type="range" min="1" max="30" value="10" id="framerate-slider" />

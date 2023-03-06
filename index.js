@@ -14,6 +14,9 @@ const game = new GameOfLife(bigGliderCells);
 
 toggleBtn.addEventListener("click", () => {
   isPaused = !isPaused;
+  toggleBtn.textContent = isPaused ? "Play" : "Pause";
+  toggleBtn.classList.add(isPaused ? "paused" : "playing");
+  toggleBtn.classList.remove(isPaused ? "playing" : "paused");
 });
 
 slider.addEventListener("input", function () {
