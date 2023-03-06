@@ -4,6 +4,7 @@ import { simpleGliderCells, bigGliderCells } from "./models/samples.js";
 const canvas = document.getElementById("my-canvas");
 const ctx = canvas.getContext("2d");
 const toggleBtn = document.getElementById("toggle-animation-btn");
+const slider = document.getElementById("framerate-slider");
 const cellSize = 6;
 let frameCount = 0;
 let framesPerSecond = 10;
@@ -13,6 +14,10 @@ const game = new GameOfLife(bigGliderCells);
 
 toggleBtn.addEventListener("click", () => {
   isPaused = !isPaused;
+});
+
+slider.addEventListener("input", function () {
+  framesPerSecond = this.value;
 });
 
 function draw() {
