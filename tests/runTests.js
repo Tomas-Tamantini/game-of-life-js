@@ -1,17 +1,5 @@
-const testCases = [
-  {
-    testDescription: "Passing test",
-    testFun: () => true,
-  },
-  {
-    testDescription: "Another passing test",
-    testFun: () => true,
-  },
-  {
-    testDescription: "Failing test",
-    testFun: () => false,
-  },
-];
+import testCases from "./gameOfLifeTestCases.js";
+
 const passedSymbol = "✅";
 const failedSymbol = "❌";
 
