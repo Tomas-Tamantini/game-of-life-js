@@ -8,10 +8,9 @@ let numFailed = 0;
 
 console.log("Unit test results:");
 testCases.forEach(({ testDescription, testFun }) => {
-  let testPassed = false;
-  testFun();
+  let testPassed = true;
   try {
-    testPassed = testFun();
+    testFun();
   } catch (error) {
     testPassed = false;
   }
