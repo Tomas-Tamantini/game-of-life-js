@@ -19,6 +19,20 @@ const testCases = [
       return game.liveCells.length === 2;
     },
   },
+
+  {
+    testDescription:
+      "Cell status can be toggled from live to dead and vice-versa",
+    testFun: () => {
+      const game = new GameOfLife();
+      if (game.cellIsAlive(0, 0)) return false;
+      game.toggleCell(0, 0);
+      if (!game.cellIsAlive(0, 0)) return false;
+      game.toggleCell(0, 0);
+      if (game.cellIsAlive(0, 0)) return false;
+      return true;
+    },
+  },
 ];
 
 export default testCases;

@@ -14,4 +14,14 @@ export default class GameOfLife {
   get liveCells() {
     return Array.from(this.#liveCells, strToCoord);
   }
+
+  toggleCell(x, y) {
+    let coords = coordToStr(x, y);
+    if (this.#liveCells.has(coords)) this.#liveCells.delete(coords);
+    else this.#liveCells.add(coords);
+  }
+
+  cellIsAlive(x, y) {
+    return this.#liveCells.has(coordToStr(x, y));
+  }
 }
