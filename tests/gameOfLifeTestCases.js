@@ -111,27 +111,27 @@ const testCases = [
   },
 
   {
-    testDescription: "Glider moves through grid",
+    testDescription: "Glider moves through grid with period 4",
     testFun: () => {
-      let gameWithGlider = new GameOfLife([
-        [0, 0],
+      let initialGliderCells = [
         [0, 1],
-        [0, 2],
         [1, 2],
+        [2, 0],
         [2, 1],
-      ]);
-      let expectedNextGen = [
-        [1, 0],
-        [1, 2],
-        [0, 1],
-        [0, 2],
-        [-1, 1],
+        [2, 2],
       ];
-      gameWithGlider.step();
-      assert(gameWithGlider.liveCells.length === expectedNextGen.length);
+      let gliderCellsAFterFourSteps = initialGliderCells.map((c) => [
+        c[0] + 1,
+        c[1] + 1,
+      ]);
+      let gameWithGlider = new GameOfLife(initialGliderCells);
+      for (let i = 0; i < 4; i++) gameWithGlider.step();
+      assert(
+        gameWithGlider.liveCells.length === gliderCellsAFterFourSteps.length
+      );
 
       let setExpected = new Set(
-        Array.from(expectedNextGen, (c) => coordToStr(...c))
+        Array.from(gliderCellsAFterFourSteps, (c) => coordToStr(...c))
       );
       let setComputed = new Set(
         Array.from(gameWithGlider.liveCells, (c) => coordToStr(...c))
