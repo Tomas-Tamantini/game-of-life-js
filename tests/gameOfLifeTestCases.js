@@ -20,6 +20,16 @@ function generateNeighbors(cellCoords, numNeighbors) {
   return neighbors;
 }
 
+function cellsAreTheSame(coordsA, coordsB) {
+  if (coordsA.length !== coordsB.length) return false;
+  let setA = new Set(Array.from(coordsA, (c) => coordToStr(...c)));
+  let setB = new Set(Array.from(coordsB, (c) => coordToStr(...c)));
+  const setsAreEqual = (a, b) =>
+    a.size === b.size && [...a].every((x) => b.has(x));
+
+  return setsAreEqual(setA, setB);
+}
+
 const testCases = [
   {
     testDescription: "Game starts empty by default",
@@ -125,19 +135,8 @@ const testCases = [
       let gameWithGlider = new GameOfLife(initialGliderCells);
       for (let i = 0; i < 4; i++) gameWithGlider.step();
       assert(
-        gameWithGlider.liveCells.length === gliderCellsAFterFourSteps.length
+        cellsAreTheSame(gameWithGlider.liveCells, gliderCellsAFterFourSteps)
       );
-
-      let setExpected = new Set(
-        Array.from(gliderCellsAFterFourSteps, (c) => coordToStr(...c))
-      );
-      let setComputed = new Set(
-        Array.from(gameWithGlider.liveCells, (c) => coordToStr(...c))
-      );
-      const setsAreEqual = (a, b) =>
-        a.size === b.size && [...a].every((x) => b.has(x));
-
-      assert(setsAreEqual(setExpected, setComputed));
     },
   },
 ];
