@@ -120,10 +120,8 @@ const testCases = [
         [2, 1],
         [2, 2],
       ];
-      let gliderCellsAFterFourSteps = initialGliderCells.map((c) => [
-        c[0] + 1,
-        c[1] + 1,
-      ]);
+      const translateCell = (c) => [c[0] + 1, c[1] + 1];
+      let gliderCellsAFterFourSteps = initialGliderCells.map(translateCell);
       let gameWithGlider = new GameOfLife(initialGliderCells);
       for (let i = 0; i < 4; i++) gameWithGlider.step();
       assert(
