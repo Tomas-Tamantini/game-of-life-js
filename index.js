@@ -42,8 +42,9 @@ slider.addEventListener("input", function () {
 
 canvas.addEventListener("click", function (event) {
   if (!isPaused) return;
-  const x = event.clientX - canvas.offsetLeft;
-  const y = event.clientY - canvas.offsetTop;
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
   const gridCoords = canvasGridConverter.gridCoordinates(x, y);
   game.toggleCell(...gridCoords);
 });
@@ -51,8 +52,9 @@ canvas.addEventListener("click", function (event) {
 canvas.addEventListener("wheel", (event) => {
   event.preventDefault(); // Prevent the default scroll behavior
 
-  const x = event.clientX - canvas.offsetLeft;
-  const y = event.clientY - canvas.offsetTop;
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
 
   if (event.deltaY < 0) canvasGridConverter.zoomIn(x, y);
   else canvasGridConverter.zoomOut(x, y);
