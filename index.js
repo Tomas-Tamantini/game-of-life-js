@@ -1,3 +1,4 @@
+import { CanvasGridConverter } from "./models/coordinateConversion.js";
 import GameOfLife from "./models/gameOfLife.js";
 import {
   bigGliderCells,
@@ -12,10 +13,10 @@ const ctx = canvas.getContext("2d");
 const toggleBtn = document.getElementById("toggle-animation-btn");
 const clearBtn = document.getElementById("clear-btn");
 const slider = document.getElementById("framerate-slider");
-const cellSize = 6;
 let frameCount = 0;
 let framesPerSecond = 10;
 let isPaused = false;
+const canvasGridConverter = new CanvasGridConverter();
 
 let game = new GameOfLife(
   gosperGliderGunCells
@@ -43,9 +44,8 @@ canvas.addEventListener("click", function (event) {
   if (!isPaused) return;
   const x = event.clientX - canvas.offsetLeft;
   const y = event.clientY - canvas.offsetTop;
-  const xGridCoord = Math.floor(x / cellSize);
-  const yGridCoord = Math.floor(y / cellSize);
-  game.toggleCell(xGridCoord, yGridCoord);
+  gridCoords = canvasGridConverter.gridCoordinates(x, y);
+  game.toggleCell(...gridCoords);
 });
 
 function setToggleBtnStyle() {
@@ -57,8 +57,8 @@ function setToggleBtnStyle() {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let cell of game.liveCells) {
-    const [x, y] = cell;
-    ctx.fillRect(cellSize * x, cellSize * y, cellSize - 1, cellSize - 1);
+    const rectSpecs = canvasGridConverter.rectangleSpecs(...cell);
+    ctx.fillRect(...rectSpecs);
   }
 }
 
