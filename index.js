@@ -44,8 +44,18 @@ canvas.addEventListener("click", function (event) {
   if (!isPaused) return;
   const x = event.clientX - canvas.offsetLeft;
   const y = event.clientY - canvas.offsetTop;
-  gridCoords = canvasGridConverter.gridCoordinates(x, y);
+  const gridCoords = canvasGridConverter.gridCoordinates(x, y);
   game.toggleCell(...gridCoords);
+});
+
+canvas.addEventListener("wheel", (event) => {
+  event.preventDefault(); // Prevent the default scroll behavior
+
+  const x = event.clientX - canvas.offsetLeft;
+  const y = event.clientY - canvas.offsetTop;
+
+  if (event.deltaY < 0) canvasGridConverter.zoomIn(x, y);
+  else canvasGridConverter.zoomOut(x, y);
 });
 
 function setToggleBtnStyle() {
